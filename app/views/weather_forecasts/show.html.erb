@@ -14,4 +14,10 @@ Current temperature is <%= @weather_forecast.current_temperature %>
   <% end %>
 </ul>
 
+<% if @weather_forecast.cached? %>
+  <p>
+    <em>This is a cached response</em>
+  </p>
+<% end %>
+
 <%= link_to "New Forecast", new_weather_forecast_path %>

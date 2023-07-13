@@ -11,20 +11,35 @@ class WeatherForecast
   end
 
   def current_temperature
-    response.json.dig("current_weather", "temperature")
+    json.dig("current_weather", "temperature")
   end
 
   def temperatures
     days.to_i.times.with_object([]) do |index, temps|
       temps << Temperature.new(
-        response.json.dig("daily", "time")[index],
-        response.json.dig("daily", "temperature_2m_max")[index],
-        response.json.dig("daily", "temperature_2m_min")[index]
+        json.dig("daily", "time")[index],
+        json.dig("daily", "temperature_2m_max")[index],
+        json.dig("daily", "temperature_2m_min")[index]
       )
     end
   end
 
+  def cached?
+    !!@cached
+  end
+
   private
+
+  def json
+    @json ||= begin
+      if Rails.cache.exist?(@postal_code)
+        @cached = true && Rails.cache.read(@postal_code)
+      else
+        Rails.cache.write(@postal_code, response.json, expires_in: 30.minutes)
+        response.json
+      end
+    end
+  end
 
   def response
     @response ||= HTTPX.get("https://api.open-meteo.com/v1/forecast",
