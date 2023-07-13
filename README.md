@@ -6,4 +6,4 @@ No API keys are required for the external services so you can just `bin/bundle` 
 
 ## Running tests
 
-Only system tests were added to use `bin/rails test:system`.
+Only system tests were added so use `bin/rails test:system`.
