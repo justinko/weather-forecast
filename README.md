@@ -1,24 +1,9 @@
-# README
+# Weather Forecaster
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+No API keys are required for the external services so you can just `bin/bundle` and `bin/rails s`.
 
-* Ruby version
+## Running tests
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Only system tests were added to use `bin/rails test:system`.
