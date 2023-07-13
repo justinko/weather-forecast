@@ -2,7 +2,10 @@
 
 ## Setup
 
-No API keys are required for the external services so you can just `bin/bundle` and `bin/rails s`.
+No API keys are required for the external services. The Rails master key is included as this is just a homework assignment.
+
+- `bin/bundle`
+- `bin/rails s`
 
 ## Running tests
 
