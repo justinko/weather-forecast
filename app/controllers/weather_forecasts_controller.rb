@@ -3,14 +3,14 @@ class WeatherForecastsController < ApplicationController
   end
 
   def show
-    geocoder = Geocoder.search(params.require(:address))
+    @geocode = Geocoder.search(params.require(:address)).first
 
-    if geocoder.any?
+    if @geocode
       @weather_forecast = WeatherForecast.new(
-        postal_code: geocoder.first.postal_code,
-        latitude: geocoder.first.latitude,
-        longitude: geocoder.first.longitude,
-        days: params.require(:days)
+        postal_code: @geocode.postal_code,
+        latitude: @geocode.latitude,
+        longitude: @geocode.longitude,
+        days: params.require(:days).to_i
       )
     else
       flash.now.alert = "No results found for the given address"

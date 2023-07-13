@@ -15,7 +15,7 @@ class WeatherForecast
   end
 
   def temperatures
-    days.to_i.times.with_object([]) do |index, temps|
+    days.times.with_object([]) do |index, temps|
       temps << Temperature.new(
         json.dig("daily", "time")[index],
         json.dig("daily", "temperature_2m_max")[index],

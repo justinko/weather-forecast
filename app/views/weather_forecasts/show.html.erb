@@ -1,4 +1,8 @@
-Current temperature is <%= @weather_forecast.current_temperature %>
+The current temperature for:
+
+<p><%= @geocode.address %></p>
+
+... is <%= @weather_forecast.current_temperature %>
 
 <h4>Temperature forecast for the next <%= pluralize(@weather_forecast.days, "day") %></h4>
 
@@ -16,7 +20,7 @@ Current temperature is <%= @weather_forecast.current_temperature %>
 
 <% if @weather_forecast.cached? %>
   <p>
-    <em>This is a cached response</em>
+    <em>This is a cached response for postal code <%= @geocode.postal_code %></em>
   </p>
 <% end %>
 
