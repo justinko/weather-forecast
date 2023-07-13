@@ -1,0 +1,11 @@
+<%= form_with url: weather_forecast_path, method: :get do |f| %>
+  <p>
+    <%= f.label :address %>
+    <%= f.text_field :address, required: true, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :days %>
+    <%= f.number_field :days, value: params.fetch(:days, 7), required: true %>
+  </p>
+  <%= f.submit "Forecast", name: nil %>
+<% end %>

@@ -1,0 +1,17 @@
+Current temperature is <%= @weather_forecast.current_temperature %>
+
+<h4>Temperature forecast for the next <%= pluralize(@weather_forecast.days, "day") %></h4>
+
+<ul>
+  <% @weather_forecast.temperatures.each do |temp| %>
+    <li>
+      Date: <%= temp.date %>
+      <br>
+      Maximum temperature: <%= temp.max %>
+      <br>
+      Minimum temperature: <%= temp.min %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Forecast", new_weather_forecast_path %>
